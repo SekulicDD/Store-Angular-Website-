@@ -1,0 +1,54 @@
+
+    <!-- Start Content -->
+    <div class="container py-5">
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="h2 pb-4">Categories</h1>
+                <ul class="list-unstyled templatemo-accordion">
+                <app-category                     
+                    (pageChange)="GetOutputVal($event)" 
+                    *ngFor="let mainCategory of mainCategories" 
+                    [mainCategories]="mainCategory" 
+                    [categories]="categories">
+                </app-category>                
+                </ul>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="row">                
+                    <div class="col-md-6 pb-4">
+                        <div class="d-flex">                          
+                            <select name="order" class="form-control" (change)="onFilterChange($event)">          
+                                <option value="1"><span class="greyOut">Order by:</span> A to Z</option>
+                                <option value="2"><span class="greyOut">Order by:</span> Z to A</option>
+                                <option value="3"><span class="greyOut">Order by:</span> Price Highest to Lowest</option>
+                                <option value="4"><span class="greyOut">Order by:</span> Price Lowest to Highest</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-4">
+                        <div class="d-flex">
+                            <input (keyup)="onSearch($event)" type="text" class="form-control" id="search" name="search" placeholder="Search...">
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="row" id="productRow" >
+                    <app-product  @fadeIn class="product"
+                        *ngFor="let product of products |filterByCatId:categoryId|search:searchText|orderBy:orderId |paginate:{itemsPerPage: 6, currentPage:page}" 
+                        [product]="product" class="col-md-4">
+                    </app-product>
+                </div>
+
+                <div div="row">
+                    <ul class="pagination pagination-lg justify-content-end">
+                        <pagination-controls (pageChange)="page=$event" (pageBoundsCorrection)="page=$event"></pagination-controls>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Content -->

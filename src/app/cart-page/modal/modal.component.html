@@ -1,0 +1,112 @@
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Checkout</button>
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Checkout form</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="col-md-9 m-auto" method="post" role="form" #f="ngForm" (ngSubmit)="submitOrder(f,modal)">
+        <div class="row">
+
+
+            <div class="form-group col-md-6 mb-3"   
+            [ngClass]="{
+                'error': f.form.controls.first_name?.invalid && (f.form.controls.first_name?.dirty || f.form.controls.first_name?.touched),
+                'success': f.form.controls.first_name?.valid && (f.form.controls.first_name?.dirty || f.form.controls.first_name?.touched)
+           }">
+          
+                <label for="inputfirst_name">First Name</label>
+                <input  type="text" 
+                class="form-control mt-1" 
+                id="first_name" 
+                name="first_name" 
+                placeholder="John" 
+                ngModel
+                required
+                >
+               
+            </div>
+   
+            <div class="form-group col-md-6 mb-3"  [ngClass]="{
+                'error': f.form.controls.last_name?.invalid && (f.form.controls.last_name?.dirty || f.form.controls.last_name?.touched),
+                'success': f.form.controls.last_name?.valid && (f.form.controls.last_name?.dirty || f.form.controls.last_name?.touched)
+           }">
+                <label for="inputlast_name">Last Name</label>
+                <input type="email" 
+                class="form-control mt-1" 
+                id="last_name" 
+                name="last_name" 
+                placeholder="Smith" 
+                ngModel
+                required>
+            </div>
+        </div>
+   
+        <div class="mb-3"  [ngClass]="{
+            'error': f.form.controls.address?.invalid && (f.form.controls.address?.dirty || f.form.controls.address?.touched),
+            'success': f.form.controls.address?.valid && (f.form.controls.address?.dirty || f.form.controls.address?.touched)
+       }">
+            <label for="inputaddress">Address</label>
+            <input type="text" 
+            class="form-control mt-1" 
+            id="address" name="address" 
+            placeholder="4797 Hickory Heights" 
+            ngModel
+            required> 
+        </div>
+        <div class="mb-3"  [ngClass]="{
+            'error': f.form.controls.zip_code?.invalid && (f.form.controls.zip_code?.dirty || f.form.controls.zip_code?.touched),
+            'success': f.form.controls.zip_code?.valid && (f.form.controls.zip_code?.dirty || f.form.controls.zip_code?.touched)
+       }">
+            <label for="inputzip_code">Zip Code</label>
+            <input 
+            type="text" 
+            class="form-control mt-1" 
+            id="zip_code" 
+            name="zip_code" 
+            placeholder="21076" 
+            ngModel
+            required
+            pattern="\b\d{5}\b">
+        </div>
+        <div class="mb-3"  [ngClass]="{
+            'error': f.form.controls.phone?.invalid && (f.form.controls.phone?.dirty || f.form.controls.phone?.touched),
+            'success': f.form.controls.phone?.valid && (f.form.controls.phone?.dirty || f.form.controls.phone?.touched)
+       }">
+            <label for="inputphone">Phone</label>
+            <input type="text" 
+            class="form-control mt-1" 
+            id="phone" name="phone" 
+            placeholder="410-791-2238" 
+            ngModel
+            required>
+        </div>
+        <div class="mb-3"  [ngClass]="{
+            'error': f.form.controls.card?.invalid && (f.form.controls.card?.dirty || f.form.controls.card?.touched),
+            'success': f.form.controls.card?.valid && (f.form.controls.card?.dirty || f.form.controls.card?.touched)
+       }">
+            <label for="inputcard">Credit card number</label>
+            <input type="text" 
+            class="form-control mt-1" 
+            id="card" name="card" 
+            placeholder="5403463589874942" 
+            ngModel
+            required
+            pattern="\b\d{16}\b">
+        </div>
+        <div class="row">
+            <div class="col text-end mt-2">
+                <button type="submit" 
+                [disabled]="f.form.invalid"  
+                routerLink="/products/1" 
+                class="btn btn-success btn-lg px-3">Send order</button>
+            </div>
+        </div>
+    </form>
+  </div>
+ 
+</ng-template>

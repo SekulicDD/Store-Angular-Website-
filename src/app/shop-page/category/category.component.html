@@ -1,0 +1,18 @@
+<li class="pb-3">
+    <p class="collapsed d-flex justify-content-between h3 text-decoration-none">
+        {{mainCategories.name}}
+        <i (click)="showCategories()" class="fa fa-fw fa-chevron-circle-{{arrow}} mt-1"></i>
+    </p>
+   
+    <ul class="collapse show list-unstyled pl-3" [@slideInOut]="arrow">
+        <div *ngFor="let category of categories">
+            <li *ngIf="category.main_category_id==mainCategories.id">
+                <a 
+                class="text-decoration-none"
+                [ngClass]="category.id == categoryId ? 'activeLink': ''" 
+                [routerLink]="'/products/'+category.id">{{category.name}}</a>
+            </li>           
+        </div>    
+    </ul>
+    
+</li>

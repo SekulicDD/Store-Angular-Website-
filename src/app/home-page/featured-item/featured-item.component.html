@@ -1,0 +1,19 @@
+
+    <div class="card">
+        <app-hover-animation  class="hoverSpan">
+        <a href="shop-single.html">
+            <img src="./assets/img/{{item.image_id}}.jpg" class="card-img-top" alt="...">
+        </a>
+        </app-hover-animation>
+        <div class="card-body featuredProductText">
+            <ul class="list-unstyled d-flex justify-content-between">
+              
+                <li class="text-muted text-right">${{item.price}}</li>
+            </ul>
+            <a reouterLnik="/products/item.category_id" class="h3 text-decoration-none text-dark"> {{item.name}}</a>
+            <p class="card-text">
+                {{item.description | shorten:60}}
+            </p>        
+        </div>
+    </div>
+

@@ -1,0 +1,32 @@
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css'],
+ 
+})
+export class NavbarComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+    
+  }
+
+  status="up";
+  bool:boolean=false;
+
+  dropMenu(){
+    if(this.bool){
+      status="up";
+      this.bool=false;
+    }
+    else{
+      this.bool=true;
+      status="down";   
+    }
+  }
+
+}

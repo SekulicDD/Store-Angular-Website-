@@ -1,0 +1,76 @@
+<!-- Start Banner Hero -->
+<div id="template-mo-zay-hero-carousel" class="carousel slide" >
+    <ol class="carousel-indicators">
+        <li class="{{carouselItems[0].status}}"></li>
+        <li class="{{carouselItems[1].status}}"></li>
+        <li class="{{carouselItems[2].status}}"></li>
+    </ol>
+    <div class="carousel-inner">   
+        <app-carousel-item *ngFor="let item of carouselItems" [item]="item"></app-carousel-item>       
+    </div>
+    <a (click)="prevItem()"  class="carousel-control-prev text-decoration-none w-auto ps-3" >
+        <i class="fas fa-chevron-left"></i>
+    </a>
+    <a (click)="nextItem()" class="carousel-control-next text-decoration-none w-auto pe-3"  >
+        <i class="fas fa-chevron-right"></i>
+    </a>
+</div>
+<!-- End Banner Hero -->
+
+ <!-- Start Categories of The Month -->
+ <section class="container py-5">
+    <div class="row text-center pt-3">
+        <div class="col-lg-6 m-auto">
+            <h1 class="h1">Most popular categories</h1>
+            <p>
+                Browse our best categories
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-4 p-5 mt-3">          
+            <div>
+                <app-hover-animation  class="hoverSpan"><a routerLink="/products/3" ><img src="./assets/img/18.jpg" class="img-fluid border"></a></app-hover-animation>               
+            </div>         
+            <h5 class="text-center mt-3 mb-3">Watches</h5>
+           
+        </div>
+        <div class="col-12 col-md-4 p-5 mt-3">
+            <div>
+                <app-hover-animation  class="hoverSpan"> <a routerLink="/products/5"><img src="./assets/img/9.jpg" class="img-fluid border"></a></app-hover-animation>               
+            </div> 
+            <h2 class="h5 text-center mt-3 mb-3">Shoes</h2>
+           
+        </div>
+        <div class="col-12 col-md-4 p-5 mt-3">
+            <div>
+                <app-hover-animation  class="hoverSpan"><a routerLink="/products/1"><img src="./assets/img/12.jpg" class="img-fluid border"></a></app-hover-animation>               
+            </div>
+            
+            
+            <h2 class="h5 text-center mt-3 mb-3">Clothes</h2>
+            
+        </div>
+    </div>
+</section>
+<!-- End Categories of The Month -->
+
+
+<!-- Start Featured Product -->
+<section class="bg-light">
+    <div class="container py-5">
+        <div class="row text-center py-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Featured Products</h1>
+                <p>
+                    Buy our best products
+                </p>
+            </div>
+        </div>
+        <div class="row">    
+            
+            <app-featured-item class="col-12 col-md-4 mb-4" *ngFor="let product of featuredItems" [item]="product"></app-featured-item>          
+        </div>
+    </div>
+</section>
+<!-- End Featured Product -->
